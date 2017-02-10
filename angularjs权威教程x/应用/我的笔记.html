@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的笔记</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.controller("myContro",function($scope){
+			$scope.message = "";
+			$scope.left = function(){
+				return 100 - $scope.message.length;
+			}
+		})
+	</script>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller="myContro">
+		<textarea cols="40" rows="10" ng-model="message">
+			
+		</textarea>
+		<h1 ng-bind="left()"></h1>
+	</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>$http 载入html</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.controller("myContro",function($scope,$http){
+			 $http.get("welcome.htm").then(function (response) {
+      			$scope.myWelcome = response.data;
+  			});
+		})
+	</script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myContro">
+		<h1>{{myWelcome}}</h1>
+	</div>
+</body>
+</html>

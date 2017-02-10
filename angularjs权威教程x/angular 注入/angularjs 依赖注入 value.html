@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs 依赖注入 value</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		//创建 value 对象 并传递数据
+		myApp.value("defaultInput",10)
+		myApp.controller("myContro",function($scope,defaultInput){
+			$scope.number = defaultInput;
+		})
+	</script>
+</head>
+<body ng-app="myApp" ng-controller="myContro">
+	<div class="container">
+		<label>输入一个数字<input type="number" ng-model="number"/></label>
+	</div>
+</body>
+</html>	

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-repeat 表格</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module("myApp",[]);
+		myApp.controller('myContro', function($scope,$http){
+			 $http.get("json.json").success(function(res){
+				$scope.data = res.records;
+			})
+		})
+	</script>
+	<style>
+		table,.iner{
+			float: left;
+		}
+		table, th , td {
+		  border: 1px solid grey;
+		  border-collapse: collapse;
+		  padding: 5px;
+		}
+		/*table tr:nth-child(odd) {
+		  background-color: #f1f1f1;
+		}
+		table tr:nth-child(even) {
+		  background-color: #ffffff;
+		}*/
+	</style>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller="myContro">
+		<div class="iner">
+			<h1>默认的顺序</h1>
+			<table>
+				<tr ng-repeat=" x in data">
+					<td>{{x.City}}</td>
+					<td>{{x.Country}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="iner">
+			<h1>根据城市排序</h1>
+			<table>
+				<tr ng-repeat="x in data | orderBy:'City'">
+					<td>{{x.City}}</td>
+					<td>{{x.Country}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="iner">
+			<h1>根据国家排序</h1>
+			<table>
+				<tr ng-repeat="x in data | orderBy:'Country' ">
+					<td>{{x.City}}</td>
+					<td>{{x.Country}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="iner">
+			<h1>把国家大写</h1>
+			<table>
+				<tr ng-repeat="x in data">
+					<td>{{x.City}}</td>
+					<td>{{x.Country | uppercase}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="iner">
+			<h1>显示序号$index</h1>
+			<table>
+				<tr ng-repeat="x in data">
+					<td>{{$index+1}}</td>
+					<td>{{x.City}}</td>
+					<td>{{x.Country}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="iner">
+			<h1>$odd奇数 $even 偶数</h1>
+			<table>
+				<tr ng-repeat="x in data">
+					<td ng-if="$odd" style="background-color:red">{{x.City}}</td>
+					<td ng-if="$even">{{x.City}}</td>
+					<td ng-if="$odd" style="background-color:red">{{x.Country}}</td>
+					<td ng-if="$even">{{x.Country}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

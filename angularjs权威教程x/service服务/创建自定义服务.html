@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建自定义服务</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.service("upper",function(){
+			this.oneUpper = function(str){
+				return str[0].toUpperCase() + str.substring(1);
+			}
+		})
+		myApp.controller("myContrl",function($scope,upper){
+			$scope.str = upper.oneUpper("can you speak English");
+		})
+		myApp.filter("myFrom",['upper',function(upper){
+			return function(str){
+				return upper.oneUpper(str);
+			}
+		}])
+	</script>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller="myContrl">
+		<h1>{{str}}</h1>
+		<h1>{{ "yes , I do"| myFrom }}</h1>
+	</div>
+</body>
+</html>

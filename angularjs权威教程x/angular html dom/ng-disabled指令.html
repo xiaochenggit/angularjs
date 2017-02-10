@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-disabled指令</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/angular.js"></script>
+</head>
+<body>
+	<div class="container" ng-app ng-init="Isbtn = true">
+		<button class="btn btn-primary" ng-disabled="Isbtn">点我</button>
+		<h1 ng-show="!Isbtn">我是可见的</h1>
+		<h1 ng-show="Isbtn">我是不可见的</h1>
+		<label><input type="checkbox" ng-model="Isbtn">选择状态</label>
+		<h1>当前状态{{Isbtn}}</h1>
+		<div ng-init="hor=13">
+			<h1 ng-show="hor>12">你能看到我吗？</h1>
+		</div>
+		<input type="number" ng-model="hor">
+	</div>
+</body>
+</html>

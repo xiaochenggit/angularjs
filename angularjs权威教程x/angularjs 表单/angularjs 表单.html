@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular form 表单</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.controller("myContro",function($scope){
+			$scope.person = {
+				xing : '肖',
+				name : '成'
+			}
+			$scope.reset = function(){
+				$scope.user = angular.copy($scope.person);
+			}
+			$scope.reset();
+		})
+	</script>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller="myContro">
+		<form action="" name="form1">
+			<label>姓:<input type="text" ng-model="user.xing"/></label>
+			<label>名:<input type="text" ng-model="user.name"/></label>
+			<br>
+			<input type="button" value="初始化" class="btn btn-default" ng-click="reset()" />
+			<h1>修改前的名字:{{person.xing + person.name}}</h1>
+			<h1>修改后的名字:{{user.xing + user.name}}</h1>
+		</form>
+	</div>
+</body>
+</html>

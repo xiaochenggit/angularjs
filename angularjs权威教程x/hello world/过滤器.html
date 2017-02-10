@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过滤器</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript">
+	    var myApp = angular.module('myApp', []);
+	    myApp.controller('name',function($scope){
+	    	$scope.today = new Date();
+	    	$scope.isUpper = function(str){
+	    		return str[0] == str[0].toUpperCase();
+	    	}
+	    })
+	    //自定义过滤器
+	    myApp.filter("oneUpper",function(){
+	    	return function(text){
+	    		return text[0].toUpperCase() + text.substring(1);
+	    	}
+	    })
+	</script>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller="name">
+		<h2>保留几位数字</h2> 
+		<h1>{{4154.45316431|number:3}}</h1>
+		<h2>currency转换成货币形式</h2>
+		<h1>{{123|currency}}</h1>
+		<h2>date格式化</h2>
+		<hr>
+		<h2>date:"medium"</h2>
+		<h1>{{ today | date:"medium" }}</h1>
+		<h2>date:"short"</h2>
+		<h1>{{ today | date:"short" }}</h1>
+		<h2>date:"fullDate"</h2>
+		<h1>{{ today | date:"fullDate" }}</h1>
+		<h2>date:"longDate"</h2>
+		<h1>{{ today | date:"longDate" }}</h1>
+		<h2>date:"mediumDate"</h2>
+		<h1>{{ today | date:"mediumDate" }}</h1>
+		<h2>date:"shortDate"</h2>
+		<h1>{{ today | date:"shortDate" }}</h1>
+		<h2>date:"mediumTime"</h2>
+		<h1>{{ today | date:"mediumTime" }}</h1>
+		<h2>date:"shortTime"</h2>
+		<h1>{{ today | date:"shortTime" }}</h1>
+		<hr>
+		<h1>年份格式化</h1>
+		<hr>
+		<h2>date:"yyyy"</h2>
+		<h1>四位年份:{{ today | date:"yyyy" }}</h1>
+		<h2>date:"yy"</h2>
+		<h1>两位年份:{{ today | date:"yy" }}</h1>
+		<h2>date:"y"</h2>
+		<h1>四位年份:{{ today | date:"y" }}</h1>
+		<hr>
+		<h1>月份格式化</h1>
+		<hr>
+		<h1>英文月份:{{ today | date:"MMMM" }}</h1>
+		<h1>英文短月份:{{ today | date:"MMM" }}</h1>
+		<h1>数字月份:{{ today | date:"MM" }}</h1>
+		<h1>数字短月份:{{ today | date:"M" }}</h1>
+		<hr>
+		<h1>日期格式化</h1>
+		<hr>
+		<h1>数字日期:{{ today | date:"dd" }}</h1>
+		<h1>数字短日期:{{ today | date:"d" }}</h1>
+		<h1>英文星期几:{{ today | date:"EEEE" }}</h1>
+		<h1>短英文星期几:{{ today | date:"EEE" }}</h1>
+		<hr>
+		<h1>小时格式化</h1>
+		<hr>
+		<h1>24小时制数字小时：{{ today | date : "HH" }}</h1>
+		<h1>一天中的第几个小时：{{ today | date : "H" }}</h1>
+		<h1>12小时制数字小时：{{ today | date : "hh" }}</h1>
+		<h1>上午或下午的第几个小时：{{ today | date : "h" }}</h1>
+		<hr>
+		<h1>分钟格式化</h1>
+		<hr>
+		<h1>数字分钟数:{{ today | date : "mm" }}</h1>
+		<h1>一小时的第几分钟: {{ today | date : "m" }}</h1>
+		<hr>
+		<h1>秒数格式化</h1>
+		<hr>
+		<h1>毫秒数:{{today|date:"ss"}}</h1>
+		<h1>第几秒:{{today|date:"s"}}</h1>
+		<h1>毫秒数:{{today|date:"sss"}}</h1>
+		<hr>
+		<h1>字符格式化</h1>
+		<hr>
+		<h1>上下午标识:{{ today | date : "a" }}</h1>
+		<h1>四位时区 : {{ today | date : "Z" }}</h1>
+		<hr>
+		<h1>下面是自定义日期格式实例</h1>
+		<hr>
+		<h1>{{ today | date : "MMMD , y"}}</h1>
+		<h1>{{ today | date : "EEEE,d,M"}}</h1>
+		<h1>{{ today | date : "hh/mm/ss"}}</h1>
+		<hr>
+		<h1>filter过滤</h1>
+		<hr>
+		<h1>{{['Ari','Lerner','Likes','To','Eat','Pizza'] | filter : "A"}}</h1>
+		<h1>{{[{
+'name': 'Ari',
+'City': 'San Francisco',
+'favorite food': 'Pizza'
+},{
+'name': 'Nate',
+'City': 'San Francisco',
+'favorite food': 'indian food'
+}]|filter:{'favorite food': 'Pizza'} }}</h1>
+		<h1>filter 函数过滤</h1>
+		<hr>
+		<h1>{{["Ari","xiaocheng","Xiong","zq","Hl"] | filter : isUpper}}</h1>
+		<h1>{{ {'name': 'Ari', 'City': 'SanFrancisco'} |  json }}</h1>
+		<hr>
+		<h1>limitTo</h1>
+		<hr>
+		<h1>{{ ['a','b','c','d','e','f'] | limitTo:1 }}</h1>
+		<hr>
+		<h1>uppercase or lowercase</h1>
+		<hr>
+		<h1>{{ "San Francisco is very cloudy" | uppercase }}</h1>
+		<hr>
+		<h1>number</h1>
+		<hr>
+		<h1>{{123131251241231|number}}</h1>
+		<h1>{{123.3141|number:2}}</h1>
+		<hr>
+		<h1>orderBy</h1>
+		<hr>
+		<h1>{{[{name:"xiaocheng",age:23},{name:"zq",age:22},{name:"hl",age:21}] | orderBy:"age"}}</h1>
+		<h1>加true 就反转</h1>
+		<h1>{{[{name:"xiaocheng",age:23},{name:"zq",age:22},{name:"hl",age:21}] | orderBy:"age":true}}</h1>
+		<h1>首字母大写{{'ginger loves dog treats'| oneUpper}}</h1>
+	</div>
+</body>
+</html>

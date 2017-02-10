@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>控制器的简单应用</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.controller('MyCtro', function($scope){
+			$scope.value = 0;
+			$scope.add = function(num){
+				$scope.value = $scope.value + num;
+			}
+			$scope.fuck = function(num){
+				$scope.value = $scope.value - num;
+			}
+		})
+		myApp.controller('MyPerson', function($scope){
+			$scope.person = {
+				name : "xiaocheng",
+				age : 23
+			}
+		})
+		myApp.controller('parent', function($scope){
+			$scope.person = {
+				name : "zq"
+			}
+		})
+		myApp.controller("children",function($scope){
+			$scope.addWife = function(name){
+				$scope.person.wife = name;
+			}
+		})
+	</script>
+</head>
+<body ng-app="myApp">
+	<div class="container"  ng-controller="MyCtro" >
+		<input type="text" ng-model="value">
+		<button ng-click="add(1)" class="btn btn-primary">加</button>
+		<a ng-click="fuck(1)" class="btn btn-primary">减</a>
+	</div>
+	<div class="container"  ng-controller="MyPerson">
+		<h1>{{person}}</h1> and their name 
+		<h2>{{person.name}}</h2> 
+		<h2>{{person.age}}</h2>
+	</div>
+	<div class="container" ng-controller="parent">
+		<h1>{{person}}</h1>
+		<div ng-controller="children">
+			<button class="btn btn-info" ng-click="addWife('hl')">点我</button>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>$timeout定时器</title>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.controller("myContro",function($scope,$timeout){
+			$scope.header = "我是默认数据";
+			$timeout(function(){
+				$scope.header = "我是定时器改变的数据";
+			},3000)
+		})
+	</script>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller="myContro">
+		<h1>{{header}}</h1>
+	</div>
+</body>
+</html>

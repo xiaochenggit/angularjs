@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var ul = document.createElement("ul");
+		var body = document.body;
+		for(var i = 0 ; i < 100 ; i ++){
+			var li = document.createElement("li");
+			if (parseInt(i/4)%2==0) {
+				li.className = "class1";
+			}else{
+				li.className = "class2";
+			}
+			ul.appendChild(li);
+		}
+		body.appendChild(ul)
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	
+	<style type="text/css">
+		.div{
+			  transition: all linear 0.5s;
+			  background-color: lightblue;
+			  height: 100px;
+			  width: 100%;
+			  position: relative;
+			  top: 0;
+			  left: 0;
+		}
+		.pos{
+			  position: relative;
+		}
+		.ng-hide{
+			  /*background-color: transparent; */
+			  height: 0px;
+		}
+	</style>
+	<script type="text/javascript"src="../js/angular.js"></script>
+	<script type="text/javascript"src="../js/angular-animate.min.js"></script>
+</head>
+<body ng-app="ngAnimate" class="container">
+	<label><input ng-model="isHide" type="checkbox" />点我</label>
+	<div class="pos">
+		<div ng-hide="isHide" class="div">
+		
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+	<form name="form" novalidate ng-app>
+		<label name="email">Your Name 
+			<input type="email" name="email" id="" ng-model="email" placeholder="Email Address" required> 
+		</label>
+		<button type="submit">提交</button>
+	</form>
+</body>
+</html>

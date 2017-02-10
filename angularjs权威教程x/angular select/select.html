@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular select</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript">
+		 var myApp = angular.module('myApp', []);
+		 myApp.controller("myContrl",function($scope){
+		 	$scope.name = [
+   				 {site : "Google", url : "http://www.google.com"},
+    			 {site : "Runoob", url : "http://www.runoob.com"},
+    			 {site : "Taobao", url : "http://www.taobao.com"}
+			];
+			$scope.sites = {
+    			site01 : "Google",
+    			site02 : "Runoob",
+    			site03 : "Taobao"
+			};
+			$scope.cars = {
+				car01 : {brand : "Ford", model : "Mustang", color : "red"},
+				car02 : {brand : "Fiat", model : "500", color : "white"},
+				car03 : {brand : "Volvo", model : "XC90", color : "black"}
+			};
+		 })
+	</script>
+</head>
+<body ng-app="myApp" ng-controller="myContrl"  class="container">
+	<select ng-model="selectedName"  ng-options="x.site for x in name" ng-init="selectedName = name[0]">
+	</select>
+	<h1>你选择的是{{selectedName}}</h1>
+	<select  id="" ng-model="select" ng-options="x.site for x in name" ng-init="select = name[0]">
+		<!-- <option value="" ng-repeat="x in name">{{x.url}}</option> -->
+	</select>
+	<h1>你选择的是{{select.url}}</h1>
+	<select ng-model="selectsites"  ng-options=" x for (x,y) in sites">
+	</select>
+	<h1>你的选择是{{selectsites}}</h1>
+	<select ng-model="car" ng-options=" y.brand for (x,y) in cars">
+		
+	</select>
+	<h1>你选择的型号是:{{car.brand}}</h1>
+	<h1>你选择的颜色是:{{car.color}}</h1>
+</body>
+</html>

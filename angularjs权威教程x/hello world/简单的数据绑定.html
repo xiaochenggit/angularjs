@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简单的数据绑定</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+</head>
+<body ng-app ="Myapp">
+	<div class="container" ng-controller="MyController">
+		<input type="text" ng-model="clock" placeholder="Your Name">
+		<h1>Hello {{clock}}</h1>
+	</div>
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript">
+		var app = angular.module('Myapp', []);
+		app.controller('MyController', function($scope,$timeout) {
+    		var upDateClock = function (){
+    			var date = new Date();
+				$scope.clock = returnNum(date.getHours())+":"+returnNum(date.getMinutes())+":"+
+				returnNum(date.getSeconds());
+				$timeout(function(){
+					upDateClock();
+				},1000)
+			}
+			upDateClock();
+			function returnNum(num){
+				if (num<=9) {
+					num = "0"+num;
+				}
+				return num;
+			}
+		});
+	</script>
+</body>
+</html>

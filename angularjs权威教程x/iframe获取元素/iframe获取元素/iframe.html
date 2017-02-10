@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!--<iframe src="content.html" width="200px" frameborder="0" scrolling="auto" onload="this.height = this.document.body.scrollHeight"></iframe>-->
+
+<div clas="top">头部</div>
+
+<div class="side">侧边栏</div>
+
+<div class="main">
+    <iframe src="content.html" marginheight="0" marginwidth="0" frameborder="0" scrolling="no" width="770" height=100% id="iframepage" name="iframepage" onload="iFrameHeight()" >
+    </iframe>
+</div>
+
+<script type="text/javascript">
+
+   function iFrameHeight() {
+
+       var ifm= document.getElementById('iframepage');
+
+       var subWeb = document.getElementById('iframepage' ).contentDocument || document.frames['iframepage'].document;
+
+       if(ifm != null && subWeb != null) {
+
+        console.log(subWeb.getElementById("box"));
+
+       }
+
+   }
+
+</script>
+
+
+</body>
+</html>

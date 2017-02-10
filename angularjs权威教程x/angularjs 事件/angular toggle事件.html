@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular toggle</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript">
+		var Myapp = angular.module('Myapp', []);
+		Myapp.controller("MyContro",function($scope){
+			$scope.xing = "Xiao";
+			$scope.name = "Cheng";
+			$scope.isHide = false;
+			$scope.qe = function(){
+				$scope.isHide = !$scope.isHide;
+			} 
+		})
+		Myapp.directive("test",function(){
+			return {
+				template : "肖成"
+			}
+		})
+	</script>
+</head>
+<body>
+	<div class="container" ng-app="Myapp" ng-controller="MyContro">
+		<button class="btn btn-primary" ng-click="qe()">点我</button>
+		<div ng-hide="isHide">
+			<label>姓:<input text="text" ng-model="xing"/></label>
+			<label>名:<input text="text" ng-model="name"/></label>
+		</div>
+		<h1>我得名字是:{{xing+name}}</h1>
+		<h1 test></h1>
+	</div>
+</body>
+</html>

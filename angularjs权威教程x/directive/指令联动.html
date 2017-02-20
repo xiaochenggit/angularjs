@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>指令联动</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="https://code.angularjs.org/1.2.0-rc.2/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.directive("myDirective",function(){
+			return {
+				restrict : 'ACE',
+				scope : {
+					myUrl : "@",
+					myLinkText : '@'
+				},
+				template : "<input type='text' ng-model='myUrl'/><a href='{{myUrl}}'>{{myLinkText}}</a>"
+			}
+		});
+	</script>
+</head>
+<body>
+	<div ng-app="myApp">
+		<div my-Directive my-link-text="百度">
+			
+		</div>
+	</div>
+</body>
+</html>

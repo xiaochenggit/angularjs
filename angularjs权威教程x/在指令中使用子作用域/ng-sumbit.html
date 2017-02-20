@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-sumbit</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src= "../js/angular.js"></script>
+	<script type="text/javascript">
+	    var myApp = angular.module('myApp', []);
+	    myApp.controller('myContro', function($scope){
+	    	$scope.people = [];
+	    	$scope.person = { name :""};
+	    	$scope.submit = function (){
+	    		if ( $scope.person.name!='' ) {
+	    			$scope.people.push( { name : $scope.person.name});
+	    			$scope.person.name = "";
+	    		};
+	    	}
+	    })
+	</script>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller="myContro">
+		<form ng-submit="submit()">
+			<input type="text" ng-model='person.name'>
+			<button type="submit" class=" btn btn-primary">点我</button>
+		</form>
+		<ul>
+			<li ng-repeat="(key, value) in people">{{value.name}}</li>
+		</ul>
+	</div>
+</body>
+</html>

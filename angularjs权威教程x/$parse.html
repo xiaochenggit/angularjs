@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>$parse</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="https://code.angularjs.org/1.4.6/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.controller("myCtroll",function($scope,$parse){
+			$scope.xc = {
+				add : function (a,b){
+					return a + b;
+				},
+				mul : function (a,b){
+					return a * b;
+				}
+			};
+			var exp = "mul(a,add(b,c))";
+			$scope.data = {
+				a : 3,
+				b : 5,
+				c : 5
+			}
+			var func = $parse(exp);
+			$scope.val = func($scope.xc,$scope.data);
+		})
+	</script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtroll">
+		<h1>{{val}}</h1>
+	</div>
+</body>
+</html>

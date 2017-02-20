@@ -9,8 +9,20 @@
 		var myApp = angular.module('myApp', []);
 		myApp.controller("myContro",function($scope){
 			$scope.message = "";
-			$scope.left = function(){
-				return 100 - $scope.message.length;
+			$scope.num = function(){
+				var num = 100 - $scope.message.length;
+				if (num < 0) {
+					num = 0;
+					 $scope.message = $scope.message.substr(0,100);
+				};
+				return num;
+			}
+			$scope.save = function(){
+				alert("保存成功");
+				// 发送数据什么的。。。
+			}
+			$scope.default = function(){
+				$scope.message = "";
 			}
 		})
 	</script>
@@ -20,7 +32,9 @@
 		<textarea cols="40" rows="10" ng-model="message">
 			
 		</textarea>
-		<h1 ng-bind="left()"></h1>
+		<h1 ng-bind="num()"></h1>
+		<button ng-click="save()" class="btn btn-primary">保存</button>
+		<button ng-click="default()" class="btn btn-default">清空</button>
 	</div>
 </body>
 </html>

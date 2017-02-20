@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>在指令中创建匿名控制器</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src= "../js/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module("myApp",[]);
+		myApp.directive('myDirective',function(){
+			return {
+				restrict : 'A',
+				template : '<h1>我的名字是{{myController.name}}</h1>',
+				controllerAs : 'myController',
+				controller : function (){
+					this.name = 'xiaocheng';
+				}
+			}
+		})
+	</script>
+</head>
+<body>
+	<div class="container" ng-app="myApp">
+		 <div my-directive>
+		 	
+		 </div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-cloak ng-bind-template</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src= "../js/angular.js"></script>
+	<script type="text/javascript">
+	</script>
+</head>
+<body>
+	<div class="container" ng-app="">
+		<div ng-init="name = 'xiaocheng';city='上海'">
+			<h1 ng-cloak>{{name}}</h1>
+			<h1 ng-bind-template="{{name}}wo{{city}}"></h1>
+		</div>
+	</div>
+</body>
+</html>

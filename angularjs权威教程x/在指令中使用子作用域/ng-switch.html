@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-switch</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="https://code.angularjs.org/1.2.0-rc.2/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module("myApp",[]);
+		myApp.controller("controll",function($scope,$timeout){
+			$scope.isNgif = true;
+			function re (){
+				$timeout(function(){
+					$scope.isNgif = !$scope.isNgif;
+					re();
+				},2000)
+			}
+			re();
+		})
+	</script>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller="controll">
+		<input type="text" ng-model="person.name">
+		<div ng-switch on="person.name">
+			<p ng-switch-default>获胜者是</p>
+			<h1 ng-switch-when="xiaocheng">{{person.name}}</h1>
+		</div>
+		<h1 ng-if="isNgif">我用来测试ng-if</h1>
+	</div>
+</body>
+</html>

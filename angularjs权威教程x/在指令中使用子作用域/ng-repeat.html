@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-repeat</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src= "../js/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module("myApp",[]);
+		myApp.controller("Controll",function($scope){
+			$scope.people = [
+				{name : 'xiaocheng',city : '上海' },
+				{name : 'zhaoqiang',city : '保定' }
+			]
+		})
+	</script>
+	<style type="text/css">
+		.odd{
+			background-color: blue;
+		}
+		.even{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller="Controll">
+		<ul>
+			<!-- 判断class -->
+			<li ng-repeat="person in people" ng-class="{even:!$even,odd:!$odd}">
+			<!-- $index 是序号 从0 开始 -->
+				{{$index+1}}{{person.name}} lives in {{person.city}}
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

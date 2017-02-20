@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的备忘录</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript">
+		 var myApp = angular.module('myApp', []);
+		 myApp.controller("myCtroll",function($scope){
+		 	 $scope.obj = [{'text':"去吃饭",isOk:false}];
+		 	 $scope.message = "",
+		 	 $scope.add = function(){
+		 	 	if ( $scope.message !== "" ) {
+		 	 		$scope.obj.push({"text":$scope.message,isOk : false});
+		 	 		$scope.message = "";
+		 	 	};
+		 	 }
+		 	 $scope.remove = function(){
+		 	 	var arr = $scope.obj;
+		 	 	$scope.obj = [];
+		 	 	angular.forEach(arr, function(x){
+		 	 		if (!x.isOk) {
+		 	 			$scope.obj.push(x);
+		 	 		}
+		 	 	});
+		 	 }
+		 })
+	</script>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller="myCtroll">
+		<input type="text" placeholder = "输入事项" ng-model="message"><button ng-click="add()">添加</button>
+		<ul>
+			<li ng-repeat="x in obj"><label><input type="checkbox" ng-model="x.isOk"/><span>{{x.text}}</span></label></li>
+		</ul>
+		<button ng-click="remove()">删除</button>
+	</div>
+</body>
+</html>

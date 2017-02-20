@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-from</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src= "../js/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.controller("myFromController",function($scope){
+			$scope.fildes = [
+				// { placeholder : "Username" , name : 'username' , isRequired : true},
+				// { placeholder : "Password" , name : 'password' ,isRequired : true},
+				// { placeholder : "Email(optional)" , name : 'email' , isRequired : false}
+				{ placeholder : "Username" , isRequired : true},
+				{ placeholder : "Password" , isRequired : true},
+				{ placeholder : "Email(optional)" , isRequired : false}
+			];
+			$scope.submitFrom = function (){
+				alert('I love work');
+			}
+		})
+	</script>
+	<style type="text/css">
+		input.ng-invalid {
+			border: 1px solid red;
+		}
+		input.ng-valid {
+			border: 1px solid green;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller="myFromController">
+		<form name = "signup_from" ng-submit="submitFrom()" novalidate>
+			<div ng-repeat="filde in fildes" ng-form="signup_form_input">
+				<input type="text" ng-required = "{{filde.isRequired}}" ng-model='filde.name' placeholder = "{{filde.placeholder}}" name="dynamic_input">
+				<div ng-show="signup_form_input.dynamic_input.$dirty && signup_form_input.dynamic_input.$invalid">
+					<span class= 'error' ng-show="signup_form_input.dynamic_input.$error.required">
+						这是必填选项
+					</span>
+				</div>
+			</div>
+			<button class="btn btn-info" ng-disabled="signup_from.$invalid" type="submit">submit</button>
+		</form>
+	</div>
+</body>
+</html>

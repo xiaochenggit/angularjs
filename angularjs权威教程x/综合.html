@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>$interpolate</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="https://code.angularjs.org/1.2.0-rc.2/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.directive('myDirective',function(){
+			return {
+				restrict : 'E',
+				template :  "<a href='http://www.baidu.com'>百度</a>"
+			}
+		})
+	</script>
+</head>
+<body>
+	<div ng-app="myApp">
+		<my-Directive></my-Directive>
+	</div>
+</body>
+</html>

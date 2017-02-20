@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我真的是来测试的少年</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.controller("myController",function($scope){
+			$scope.phones = [
+			    {"name": "Nexus S",
+			     "snippet": "Fast just got faster with Nexus S.",
+			     "age": 0},
+			    {"name": "Motorola XOOM™ with Wi-Fi",
+			     "snippet": "The Next, Next Generation tablet.",
+			     "age": 1},
+			    {"name": "MOTOROLA XOOM™",
+			     "snippet": "The Next, Next Generation tablet.",
+			     "age": 2}
+			];
+			$scope.order = 'age';
+		})
+	</script>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller="myController">
+		<select ng-model='order' class ='form-control'>
+			<option value="name">byName</option>
+			<option value="age">byAge</option>
+		</select>
+		<input type="text" class="form-control" ng-model='text' placeholder= '添加名字'>
+		<ul>
+			<li ng-repeat="phone in phones | filter : text | orderBy : order" >{{phone.name}}<p>{{phone.snippet}}</p>{{phone.age}}</li>
+		</ul>
+	</div>
+</body>
+</html>

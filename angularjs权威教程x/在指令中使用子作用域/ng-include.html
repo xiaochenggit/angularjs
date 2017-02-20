@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-include</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="https://code.angularjs.org/1.2.0-rc.2/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', [])
+		.controller("myCtroll",function($scope){
+			$scope.src = "../img/bg.jpg";
+		})
+	</script>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller="myCtroll">
+		<div ng-include="'ng-src.html'" ng-init="name='xiaocheng'">
+			<!-- <h1>{{name}}</h1> -->
+		</div>
+	</div>
+</body>
+</html>

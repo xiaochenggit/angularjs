@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src= "../js/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.controller("SomeController",function($scope){
+
+		});
+		myApp.controller("SecondController",function($scope){
+
+		});
+		myApp.directive('myDirective', function() {
+			return {
+				restrict: 'AEC',
+				scope: false,// 阻断从外部原型继承作用域的指令，将 scope 属性设置为 false
+				template : '<div>Inside myDirective:{{myProperty}}</div>'
+			};
+		});
+	</script>
+</head>
+<body>
+	<div ng-app="myApp" ng-init="someProperty = 'some data'">
+	    <div ng-init="siblingProperty='moredata'">
+	        Inside Div Two: {{ aThirdProperty }}
+	        <div ng-init="aThirdProperty = 'data for 3rd property'" ng-controller="SomeController">
+	            Inside Div Three: {{ aThirdProperty }}
+	            <div ng-controller="SecondController">
+	                Inside Div Four: {{ aThirdProperty }}
+	                <br>
+	                Outside myDirective: {{ myProperty }}
+	                <div my-directive ng-init="myProperty = 'wow, this is cool'">
+	       				
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-select</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src= "../js/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', [])
+		.controller("myContro",function($scope){
+			$scope.citys = [
+				{name : '北京'},
+				{name : '上海'},
+				{name : '深圳'},
+				{name : '广州'},
+				{naem : '杭州'}
+			]
+		})
+	</script>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller = "myContro">
+		<select ng-model='bestCity'>
+			<option ng-repeat="city in citys">{{city.name}}</option>
+		</select>
+		<h1>你喜欢的城市是{{bestCity}}</h1>
+	</div>
+</body>
+</html>

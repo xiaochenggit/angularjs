@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-class</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src= "../js/angular.js"></script>
+	<script type="text/javascript">
+		var MyApp = angular.module('MyApp', []);
+		MyApp.controller("myController",function($scope){
+			$scope.getNumber = function(){
+				var number = parseInt(Math.random()*10);
+				return number;
+			}
+		})
+	</script>
+	<style type="text/css">
+		.red{
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" ng-app="MyApp" ng-controller="myController">
+		<div ng-class="{ red : x>5 }" ng-if="x>5">
+			我是测试的框
+		</div>
+		<button ng-click="x = getNumber()" class="btn btn-default" ng-init="x = 0">点我</button>
+		<h1>{{x}}</h1>
+	</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任意内容的指令  transclude: true 。</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src= "../js/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.directive('sidebox',function(){
+			return {
+				restrict : 'AE',
+				// scope  transclude  template 里面的 ng-transclude 起到了非常重要的作用
+				scope : {
+					title : '@'
+				},
+				transclude : true,
+				template : "<div class= 'container'><div class='content'><h2 class='header'>{{title}}</h2><span class='content' ng-transclude></span></div></div>"
+			}
+		});
+	</script>
+</head>
+<body ng-app="myApp" >
+	<div sidebox title="Links">
+		<ul>
+			<li>First link</li>
+			<li>Second link</li>
+		</ul>
+	</div>
+	<div sidebox title="TagCloud" sidebox>
+		<div class="tagcloud">
+			<a href="">Graphics</a>
+			<a href="">AngularJS</a>
+			<a href="">D3</a>
+			<a href="">Front-end</a>
+			<a href="">Startup</a>
+		</div>
+	</div>
+</body>
+</html>

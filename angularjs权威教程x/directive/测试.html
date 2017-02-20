@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module("myApp",[]);
+		myApp.controller("myCtroll",function($scope,$timeout){
+			$timeout(function(){
+				$scope.myUrl = "http://www.baidu.com";
+			},2000)
+		})
+	</script>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller="myCtroll">
+		<a ng-href="{{myUrl}}">百度</a>
+	</div>
+</body>
+</html>

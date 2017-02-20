@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-click</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="https://code.angularjs.org/1.2.0-rc.2/angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module("myApp",[]);
+		myApp.controller("Controll",function($scope){
+			$scope.name = "肖成";
+			$scope.changeName = function(name){
+				$scope.name = name;
+			}
+		})
+	</script>
+</head>
+<body>
+	<div class="container" ng-app="myApp" ng-controller="Controll">
+		<button class="btn btn-info" ng-click="changeName('赵强')">点我发生改变哦</button>
+		<h1>{{name}}</h1>
+	</div>
+</body>
+</html>

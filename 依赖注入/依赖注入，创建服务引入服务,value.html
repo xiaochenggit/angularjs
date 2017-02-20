@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>依赖注入，创建服务引入服务,value</title>
+	<script type="text/javascript" src="https://code.angularjs.org/1.2.0-rc.2/angular.js"></script>
+	<script type="text/javascript">
+		// 模块
+		var myApp = angular.module('myApp', []);
+		// value 对象
+		myApp.value("deInput",5);
+
+		// 创建工厂
+		myApp.factory("numCheng",function(){
+			var factory = {};
+			factory.mulit = function (a,b){
+				return a * b ;
+			}
+			return factory;
+		})
+		// 创建服务 
+		myApp.service('createService',function(numCheng){
+			// 服务中的 square 方法
+			this.square = function (a){
+				return numCheng.mulit(a,a);
+			}
+		})
+		myApp.controller('myCtroller',function($scope,createService,deInput){
+			// 引用对象
+			$scope.number = deInput;
+			// 引用服务
+			$scope.result = createService.square($scope.number);
+			// 监听
+			$scope.$watch('number', function(newValue, oldValue, scope) {
+				if ( newValue != oldValue ) {
+					$scope.result = createService.square($scope.number);
+				};
+			});
+		})
+	</script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtroller">
+		<input type="number" ng-model='number'>
+		<h1>number{{number}}</h1>
+		<h1>result{{result}}</h1>
+	</div>
+</body>
+</html>
